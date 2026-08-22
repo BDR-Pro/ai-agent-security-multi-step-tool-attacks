@@ -89,6 +89,9 @@ normalized ≈ 162 per public cell (~455 × 4 posts under a 4-hop cap).
 2. Use the provided notebook (it writes `attack.py` to `/kaggle/working/` and
    starts `JEDAttackInferenceServer().serve()`).
 3. *Save Version → Save & Run All (Commit)*, then submit the committed version.
+   The notebook writes a **commit-time placeholder `submission.csv`** (guarded by
+   `KAGGLE_IS_COMPETITION_RERUN`) so the submit check passes; the hidden rerun's
+   gateway overwrites it with the real per-model/guardrail scores.
    You get 5 submissions/day and 2 final selections — submit both variants and
    keep the higher.
 
