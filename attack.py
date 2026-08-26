@@ -79,7 +79,7 @@ class AttackAlgorithm(AttackAlgorithmBase):
         self.fallback_n = int(c.get("fallback_n", 300))
         self.hard_cap = int(c.get("hard_cap", 2000))
         self.replay_budget_s = float(c.get("replay_budget_s", 8750.0))
-        self.replay_frac = float(c.get("replay_frac", 0.85))
+        self.replay_frac = float(c.get("replay_frac", 0.95))
         self.split_n = int(c.get("split_n", 8))
         self.split_threshold_s = float(c.get("split_threshold_s", 12.0))
         self.probe_hops = int(c.get("probe_hops", 8))
