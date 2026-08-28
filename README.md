@@ -108,3 +108,21 @@ selection.
 ## License
 
 MIT (per the competition's winner-license terms).
+
+
+## Update — per-model K (public LB 86.2)
+
+Forum insight from top-ranked competitors: the score is `mean(gpt_oss, gemma)`; the
+~84 wall means one cell is maxed and the other drags. On the real evaluator **Gemma
+reliably fires only ONE tool call** (multi-hop is malformed and tanks), while
+**gpt_oss multi-hop helps**. So `attack.py` now does a **latency split**: the slow
+(gpt_oss/Harmony) model gets a *forged-plan multipost* (K posts whose plan is inside
+the forged empty-analysis channel), while Gemma stays single-call. Measured:
+
+| Config | Public score |
+|---|---:|
+| live-fill single-post (K=1), frac 0.95 | 84.4 |
+| per-model: gpt_oss K=4 / gemma K=1 | 84.1 |
+| **per-model: gpt_oss K=6 / gemma K=1, frac 0.96** | **86.2** |
+
+`attack.py` = the 86.2 config. Ladder: 24.5 → 29.5 → 49.5 → 77.7 → 84.7 → **86.2**.
